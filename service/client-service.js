@@ -1,30 +1,5 @@
-const crearNuevaLinea = (nombre, email) => {
-    const linea = document.createElement("tr");//crea el tipo de etiqueta
-    const contenido = //pone el contenido, si tiene variables intercambiables se pone variable
-        `<td class="td" data-td>${nombre}</td>
-        <td>${email}</td>
-        <td>
-            <ul class="table__button-control">
-                <li>
-                    <a href="../screens/editar_cliente.html"
-                        class="simple-button simple-button--edit">Editar</a>
-                </li>
-                <li>
-                    <button class="simple-button simple-button--delete" type="button">
-                        Eliminar
-                    </button>
-                </li>
-            </ul>
-        </td>`;
-    linea.innerHTML = contenido; //se mezcla se agrega el contenido
-    return linea
-}
-
-const table = document.querySelector("[data-table]") //obtiene el data
-
-
 const listaClientes = () => {
-    const promise = new Promise((resolve, reject) => {
+    /* const promise = new Promise((resolve, reject) => {
         const http = new XMLHttpRequest(); //inicializa las de http
         //abre http recibe(metodo, url) los metodos get put etc
         http.open("GET", "http://localhost:3000/perfil");
@@ -39,14 +14,14 @@ const listaClientes = () => {
                 resolve(response)
             }
         }
-    })
+    }); 
+    return promise; //al salir es solo data*/
 
-    return promise; //al salir es solo data
+    return fetch("http://localhost:3000/perfil").then(respuesta => respuesta.json()); //es mas rapido esto que promesa;
 };
 
-listaClientes().then((data) => {
-    data.forEach(perfil => {
-        const nuevaLinea = crearNuevaLinea(perfil.nombre, perfil.email);
-        table.appendChild(nuevaLinea);
-    });
-}).catch((error) => alert("UN ERROR"))
+// service hace comunicacion
+
+export const clientServices = {
+    listaClientes
+};

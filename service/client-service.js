@@ -20,8 +20,28 @@ const listaClientes = () => {
     return fetch("http://localhost:3000/perfil").then(respuesta => respuesta.json()); //es mas rapido esto que promesa;
 };
 
+const crearCliente = (nombre, email) => {
+    return fetch("http://localhost:3000/perfil", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nombre, email, id: uuid.v4() })
+    })
+}
+
+const eliminarCliente = (id) => {
+    return fetch(`http://localhost:3000/perfil/${id}`, {
+        method: "DELETE"
+    })
+}
+
 // service hace comunicacion
 
 export const clientServices = {
-    listaClientes
+    listaClientes,
+    crearCliente,
+    eliminarCliente,
 };
+
+

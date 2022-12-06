@@ -1,6 +1,6 @@
 import { clientServices } from "../service/client-service.js";
 
-const crearNuevaLinea = (nombre, email) => {
+const crearNuevaLinea = (nombre, email, id) => {
     const linea = document.createElement("tr");//crea el tipo de etiqueta
     const contenido = //pone el contenido, si tiene variables intercambiables se pone variable
         `<td class="td" data-td>${nombre}</td>
@@ -12,22 +12,25 @@ const crearNuevaLinea = (nombre, email) => {
                         class="simple-button simple-button--edit">Editar</a>
                 </li>
                 <li>
-                    <button class="simple-button simple-button--delete" type="button">
+                    <button class="simple-button simple-button--delete" type="button" id=${id}>
                         Eliminar
                     </button>
                 </li>
             </ul>
         </td>`;
     linea.innerHTML = contenido; //se mezcla se agrega el contenido
+    const btn = linea.querySelector("button");
+    btn.addEventListener("click", () => {
+        clientServices.eliminarCliente(btn.id).then().catch((err) => alert(`ocurrio el error ${err}`))
+    })
     return linea
 }
 
 const table = document.querySelector("[data-table]") //obtiene el data
 
 clientServices.listaClientes().then((data) => {
-    data.forEach(perfil => {
-        const nuevaLinea = crearNuevaLinea(perfil.nombre, perfil.email);
+    data.forEach(({ nombre, email, id }) => {
+        const nuevaLinea = crearNuevaLinea(nombre, email, id);
         table.appendChild(nuevaLinea);
     });
-}).catch((error) => alert("UN ERROR"))
-
+}).catch((error) => alert(`UN ERROR ${error}`));

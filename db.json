@@ -1,13 +1,48 @@
 {
-	"perfil": [
-		{
-			"nombre": "Harland Lohora",
-			"email": "harland@alura.com",
-			"id": 1
-		},
-		{
-			"nombre": "Bryan Quintero",
-			"email": "bryan@example.co"
-		}
-	]
+  "perfil": [
+    {
+      "nombre": "Harland Lohora",
+      "email": "harland@alura.com",
+      "id": 1
+    },
+    {
+      "nombre": "Bryan Quintero",
+      "email": "bryan@example.co"
+    },
+    {
+      "nombre": "BRYAN",
+      "email": "Quintero Guacary",
+      "id": "bc8c5164-f146-486f-a919-b953a58d6188"
+    },
+    {
+      "nombre": "BRYAN",
+      "email": " mas pruieba redireccion",
+      "id": "88b3dabf-09b0-4f9a-80de-c8fd832ad131"
+    },
+    {
+      "nombre": "BRYAN",
+      "email": "prueba direccion 2",
+      "id": "838e9501-7834-45c9-9b95-c54ed8a3df76"
+    },
+    {
+      "nombre": "BRYAN",
+      "email": "Quintero Guacary prueba 3",
+      "id": "24bedba2-8b54-4492-9d42-bb64062fa821"
+    },
+    {
+      "nombre": "bryan ",
+      "email": "prueba redireccion 5",
+      "id": "ca32e279-1429-442f-92e2-918d03bd0d0b"
+    },
+    {
+      "nombre": "BRYAN",
+      "email": "mas",
+      "id": "8d553911-9f99-4ee9-91b6-8d0027919fb8"
+    },
+    {
+      "nombre": "ahora",
+      "email": "qeu tal",
+      "id": "c2c4f7d8-4a60-4993-b52c-30906c31790b"
+    }
+  ]
 }

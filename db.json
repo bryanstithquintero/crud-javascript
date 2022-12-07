@@ -1,7 +1,7 @@
 {
   "perfil": [
     {
-      "nombre": "Harland Lohora",
+      "nombre": "Harland Lohora 3",
       "email": "harland@alura.com",
       "id": 1
     },
@@ -16,12 +16,7 @@
     },
     {
       "nombre": "BRYAN",
-      "email": " mas pruieba redireccion",
-      "id": "88b3dabf-09b0-4f9a-80de-c8fd832ad131"
-    },
-    {
-      "nombre": "BRYAN",
-      "email": "prueba direccion 2",
+      "email": "prueba direccion 2 y actualizacion",
       "id": "838e9501-7834-45c9-9b95-c54ed8a3df76"
     },
     {

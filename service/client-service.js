@@ -1,4 +1,4 @@
-const listaClientes = () => {
+const listaClientes = async () => {
     /* const promise = new Promise((resolve, reject) => {
         const http = new XMLHttpRequest(); //inicializa las de http
         //abre http recibe(metodo, url) los metodos get put etc
@@ -17,37 +17,43 @@ const listaClientes = () => {
     }); 
     return promise; //al salir es solo data*/
 
-    return fetch("http://localhost:3000/perfil").then(respuesta => respuesta.json()); //es mas rapido esto que promesa;
+    const respuesta = await fetch("http://localhost:3000/perfil");
+
+    return respuesta.json();
 };
 
-const crearCliente = (nombre, email) => {
-    return fetch("http://localhost:3000/perfil", {
+const crearCliente = async (nombre, email) => {
+    const respuesta = await fetch("http://localhost:3000/perfil", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ nombre, email, id: uuid.v4() })
     })
+    return respuesta;
 }
 
-const eliminarCliente = (id) => {
-    return fetch(`http://localhost:3000/perfil/${id}`, {
+const eliminarCliente = async (id) => {
+    const respuesta = await fetch(`http://localhost:3000/perfil/${id}`, {
         method: "DELETE"
     })
+    return respuesta;
 }
 
-const detalleCLiente = (id) => {
-    return fetch(`http://localhost:3000/perfil/${id}`).then((respuesta) => respuesta.json())
+const detalleCLiente = async (id) => {
+    const respuesta = await fetch(`http://localhost:3000/perfil/${id}`);
+    return respuesta.json();
 }
 
-const actualizarCliente = (nombre, email, id) => {
-    return fetch(`http://localhost:3000/perfil/${id}`, {
+const actualizarCliente = async (nombre, email, id) => {
+    const respuesta = await fetch(`http://localhost:3000/perfil/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ nombre, email })
-    }).then((respuesta) => respuesta).catch()
+    });
+    return respuesta;
 }
 
 // service hace comunicacion

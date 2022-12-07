@@ -2,7 +2,7 @@ import { clientServices } from "../service/client-service.js";
 
 const formulario = document.querySelector("[data-form]")
 
-const obtenerInfo = () => {
+const obtenerInfo = async () => {
     const url = new URL(window.location);
     const id = url.searchParams.get("id");
 
@@ -11,17 +11,26 @@ const obtenerInfo = () => {
     }
 
     const nombre = document.querySelector("[data-nombre]");
-    const email = document.querySelector("[data-email]")
+    const email = document.querySelector("[data-email]");
 
-    clientServices.detalleCLiente(id).then((perfil) => {
-        nombre.value = perfil.nombre;
-        email.value = perfil.email;
-    })
+    try {
+        const perfil = await clientServices.detalleCLiente(id);//es como un then
+        if (perfil.nombre && perfil.email) {
+            nombre.value = perfil.nombre;
+            email.value = perfil.email;
+        } else {
+            throw new Error();
+        }
+
+    } catch (error) {
+        window.location.href = "../screens/error.html";
+    }
+
 }
 
 obtenerInfo();
 
-formulario.addEventListener("submit", (evento) => {
+formulario.addEventListener("submit", async (evento) => {
     evento.preventDefault();
     const url = new URL(window.location);
     const id = url.searchParams.get("id");
@@ -29,8 +38,10 @@ formulario.addEventListener("submit", (evento) => {
     const nombre = document.querySelector("[data-nombre]").value
     const email = document.querySelector("[data-email]").value
 
-    clientServices.actualizarCliente(nombre, email, id).then(() => {
+    try {
+        await clientServices.actualizarCliente(nombre, email, id);
         window.location.href = "/screens/edicion_concluida.html"
-    })
+    } catch (error) {
+        window.location.href = "../screens/error.html";
+    }
 });
-

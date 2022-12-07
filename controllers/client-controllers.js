@@ -20,6 +20,7 @@ const crearNuevaLinea = (nombre, email, id) => {
         </td>`;
     linea.innerHTML = contenido; //se mezcla se agrega el contenido
     const btn = linea.querySelector("button");
+
     btn.addEventListener("click", () => {
         clientServices.eliminarCliente(btn.id).then().catch((err) => alert(`ocurrio el error ${err}`))
     })
